@@ -4,7 +4,7 @@ import CampoTexto from '../CampoTexto'
 import ListaSuspensa from '../ListaSuspensa'
 import './Formulario.css'
 
-const Formulario = () => {
+const Formulario = (props) => {
 
     const times = [
         'Programação',
@@ -24,7 +24,13 @@ const Formulario = () => {
 
     const aoSalvar = (evento) => {
         evento.preventDefault()
-        console.log('Form foi submetido =>', nome, cargo, imagem, time)
+        //cria uma prop e o valor dessa prop é a variavel 
+        props.aoColaboradorCadastrado({
+            nome,
+            cargo,
+            imagem,
+            time
+        })
     }
 
     return (
@@ -65,5 +71,11 @@ const Formulario = () => {
         </section>
     )
 }
+
+/*
+statefull - É um elemento de input de formulário cujo valor é controlado pelo React.Quando o usuário insere dados em um componente controlado, o evento que manipula essa alteração é disparado e o seu código decide se o input é válido (ou seja, renderizado com o valor atualizado). Se você não re-renderizar o elemento de formulário, permanecerá inalterado.
+
+stateless - Quando um usuário insere dados em um campo de formulário (um input box, dropbox, etc), a informação atualizada é refletida sem necessidade do React fazer nada. No entanto, isso também significa que você não pode forçar o campo a ter um certo valor.
+*/
 
 export default Formulario

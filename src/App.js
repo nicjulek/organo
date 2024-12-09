@@ -7,39 +7,34 @@ function App() {
 
   const times = [
     {
-      nome: 'Programação',
-      corPrimaria: '#57c278',
-      corSecundaria: '#d9f7e9'
-    },
-    {
       nome: 'Front-End',
-      corPrimaria: '#82cffa',
-      corSecundaria: '#e8f8ff'
+      corPrimaria: '#82CFFA',
+      corSecundaria: '#E8F8FF',
     },
     {
       nome: 'Data Science',
-      corPrimaria: '#a6d157',
-      corSecundaria: '#f0f8e2'
+      corPrimaria: '#A6D157',
+      corSecundaria: '#F0F8E2',
     },
     {
       nome: 'Devops',
-      corPrimaria: '#e06b69',
-      corSecundaria: '#fde7e8'
+      corPrimaria: '#E06B69',
+      corSecundaria: '#FDE7E8',
     },
     {
       nome: 'UX e Design',
-      corPrimaria: '#d8',
-      corSecundaria: ''
+      corPrimaria: '#D86EBF',
+      corSecundaria: '#FAE5F5',
     },
     {
       nome: 'Mobile',
-      corPrimaria: '',
-      corSecundaria: ''
+      corPrimaria: '#FEBA05',
+      corSecundaria: '#FFF5D9',
     },
     {
       nome: 'Inovação e Gestão',
-      corPrimaria: '',
-      corSecundaria: ''
+      corPrimaria: '#FF8A29',
+      corSecundaria: '#FFEEDF',
     }
   ]
 
@@ -50,13 +45,15 @@ function App() {
     setColaboradores([...colaboradores, colaborador])
   }
 
+  //foreach = não devolve nada
+  //map = retorna um novo array
+
   return (
     <div className="App">
       <Banner />
-      <Formulario aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} />
-      <Time nome="Programação" />
-      <Time nome="Front-end" />
-      <Time nome="Data Science" />
+      <Formulario times={times.map()} aoColaboradorCadastrado={colaborador => aoNovoColaboradorAdicionado(colaborador)} />
+
+      {times.map(time => <Time /*key = controla a renderização*/ key={time.nome} nome={time.nome} corPrimaria={time.corPrimaria} corSecundaria={time.corSecundaria} />)}
     </div>
   );
 }
